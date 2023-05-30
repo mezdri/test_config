@@ -1,0 +1,90 @@
+name: 'Build and deploy to S3'
+
+on:
+  push:
+    branches:
+      - testing
+  pull_request:
+    branches:
+      - testing
+    types: [ opened, synchronize ]
+
+#oidc encima de oauth 2.0
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+#  avoid_reduncy:
+#    runs-on: ubuntu-22.04
+#    steps:
+#      - name: Cancel Previous builds
+#        uses: styfle/cancel-workflow-action@0.9.1
+#        with:
+#          access_token: ${{ github.token }}
+
+  #  lint:
+  #    runs-on: ubuntu-22.04
+  #    steps:
+  #      - uses: actions/checkout@v3
+  #        with:
+  #          fetch-depth: 0
+  #
+  #      - uses: actions/setup-node@v3
+  #        with:
+  #          node-version: 14
+  #          cache: 'npm'
+  #
+  #      - name: install
+  #        run: npm ci --no-audit --no-fund
+  #
+  #      - name: Lint
+  #        run: npm run eslint
+
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+          cache: 'npm'
+
+      - name: install
+        run: npm ci --no-audit --no-fund
+
+      - name: compile dist
+        run: npm run build -- --mode testing1
+
+      - uses: actions/upload-artifact@v2
+        if: ${{ github.event_name == 'push' }}
+        with:
+          name: dist
+          path: dist
+
+  deploy:
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-22.04
+    needs: [ build ]
+
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: dist
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: ${{ secrets.S3_BUCKET_REGION_QA }}
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT }}:role/git-track3-portal
+          role-session-name: GithubSession # OIDC
+
+      - name: Check login
+        run: aws sts get-caller-identity
+
+      - name: Upload to S3
+        run: aws s3 sync ./dist s3://${{ secrets.S3_BUCKET_QA }} --acl public-read

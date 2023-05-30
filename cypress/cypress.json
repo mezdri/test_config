@@ -1,0 +1,14 @@
+{
+  "integrationFolder": "integration",
+  "baseUrl": "http://desatrackfront.gpschile.local/",
+  "projectId": "br68ag",
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "test-output-[hash].xml",
+    "toConsole": true,
+    "attachments": true
+  },
+  "video": false,
+  "pluginsFile": "plugins/index.js",
+  "supportFile": "support/index.js"
+}

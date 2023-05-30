@@ -1,0 +1,22 @@
+.cellClassAggrid:hover span #iconMap {
+  font-size: 28px !important;
+}
+
+.cellClassAggrid:hover span #iconVideo {
+  font-size: 28px !important;
+}
+
+.cellClassDetailAggrid {
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cellClassDetailAggrid span {
+  height: 31px;
+}
+
+.cellClassDetailAggrid:hover span #infoVOD {
+  font-size: 26px !important;
+}

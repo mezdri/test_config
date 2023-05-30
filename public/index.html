@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>
+    <%= process.env.VUE_APP_TITLE %>
+  </title>
+  <link href="https://fonts.googleapis.com/css?family=Asap:400,400i,500,500i,600,600i,700,700i|Material+Icons"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://live.gpschile.com/ms/js_css/player/style/lava-player.css" />
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"></script>
+  <script type="text/javascript"
+    src="//maps.googleapis.com/maps/api/js?key=<%= VUE_APP_GOOGLE_MAPS_API_KEY %>&libraries=geometry,drawing,places"></script>
+  <script
+    src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OverlappingMarkerSpiderfier/1.0.3/oms.min.js"></script>
+  <script src="https://cms6.gpschile.com/808gps/open/player/js/jquery.min.js"></script>
+  <script src="https://cms6.gpschile.com/808gps/open/player/swfobject-all.js"></script>
+  <script type="text/javascript" src="https://live.gpschile.com/ms/jmuxer.js"></script>
+  <script type="text/javascript" src="https://live.gpschile.com/ms/jmuxer.js"></script>
+  <script type="text/javascript" src="https://live.gpschile.com/ms/js_css/player/js/jquery.lava-videolayout.js"></script>
+  <script type="text/javascript" src="https://live.gpschile.com/ms/js_css/player/js/flv20170504.min.js"></script>
+  <script type="text/javascript" src="https://live.gpschile.com/ms/js_css/player/js/lang.js"></script>
+  <script type="text/javascript" src="https://live.gpschile.com/ms/js_css/player/js/lava-player.js"></script>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but one doesn't work properly without JavaScript enabled.
+      Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+<style>
+  .accent {
+    background-color: #ffe800 !important;
+    border-color: #ffe800 !important;
+  }
+
+  .success--text {
+    color: #ffe800 !important;
+    caret-color: #ffe800 !important;
+  }
+
+  .v-input--switch.v-input--is-dirty .v-input--selection-controls__ripple,
+  .v-input--switch.v-input--is-dirty .v-input--switch__thumb {
+    -webkit-transform: translate(16px, 0);
+    transform: translate(16px, 0);
+    color: #fff !important;
+  }
+
+  div[class='v-input v-text-field v-text-field--single-line v-input--hide-details v-input--is-focused theme--light primary--text'] {
+    color: #ffe800 !important;
+    caret-color: #ffe800 !important;
+  }
+
+  div[class='v-input v-text-field v-text-field--single-line v-input--hide-details v-input--is-label-active v-input--is-dirty v-input--is-focused theme--light primary--text'] {
+    color: #ffe800 !important;
+    caret-color: #ffe800 !important;
+  }
+
+  i[class='v-icon material-icons theme--light accent--text'] {
+    color: #27488e !important;
+    caret-color: #27488e !important;
+  }
+
+  .grid-celda-vacia {
+    /* color: red !important; */
+    border-color: red !important;
+    border-bottom-style: solid !important;
+    border-width: 0px 0px 1px 0px !important;
+  }
+
+  .grid-celda-con-valor {
+    color: #27488e !important;
+    border-color: transparent !important;
+  }
+
+  /*Headers de las Grillas*/
+  /*.ag-header-cell-label {
+        color: #686666;
+      }*/
+</style>
+
+</html>

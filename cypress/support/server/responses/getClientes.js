@@ -1,0 +1,38 @@
+export default [
+  {
+    id: 1,
+    clienteId: 1,
+    usuarioId: 5,
+    fechaInicioAsociacion: '2019-09-11T15:55:12.5333206',
+    fechaFinAsociacion: null,
+    nombre: 'GPS CHILE',
+    estado: 1,
+  },
+  {
+    id: 2,
+    clienteId: 2,
+    usuarioId: 5,
+    fechaInicioAsociacion: '2019-09-11T15:55:12.5353018',
+    fechaFinAsociacion: null,
+    nombre: 'KOMATSU CHILE S.A.',
+    estado: 1,
+  },
+  {
+    id: 3,
+    clienteId: 3,
+    usuarioId: 5,
+    fechaInicioAsociacion: '2019-09-11T15:55:12.5353125',
+    fechaFinAsociacion: null,
+    nombre: 'SOC DE TRANSPORTES CHARRIOT LIMITADA.',
+    estado: 1,
+  },
+  {
+    id: 4,
+    clienteId: 4,
+    usuarioId: 5,
+    fechaInicioAsociacion: '2019-09-11T15:55:12.535314',
+    fechaFinAsociacion: null,
+    nombre: 'COMPAÑIA DE LEASING TATTERSALL S.A.',
+    estado: 1,
+  },
+];

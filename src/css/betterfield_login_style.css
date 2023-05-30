@@ -1,0 +1,49 @@
+#app {
+  margin-top: 0px !important;
+}
+.flex {
+  font-weight: normal !important;
+}
+.logo-login {
+  background-image: url('../assets/betterfield_banner_sf.png');
+  background-repeat: no-repeat;
+  background-size: 60%; /* tamaño de la imagen original */
+  background-position: 150px /* posición de la imagen original */;
+  cursor: pointer;
+  height: 225px; /* altura de la imagen */
+  max-width: 100%; /* para hacer que la imagen sea responsive */
+}
+.bimg {
+  background: url('../assets/fondo3_betterfield.jpg') no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+a {
+  color: #526da5;
+}
+v-btn {
+  color: #526da5;
+}
+.application {
+  font-family: 'asap', sans-serif !important;
+}
+.sizeLogo {
+  height: 50%;
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.colorbtn {
+  background-color: #526da5 !important;
+  color: white !important;
+}
+.colortitle {
+  background-color: #27488e !important;
+  color: white;
+}

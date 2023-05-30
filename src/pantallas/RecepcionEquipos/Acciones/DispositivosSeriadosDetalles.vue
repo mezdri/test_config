@@ -1,0 +1,230 @@
+<template>
+  <v-container fluid v-show="mostrarSerie">
+    <div align="left">
+      <v-flex>
+        <h2 class="h2_title" style="margin-top: 12px !important">
+          Equipos Seriados
+        </h2>
+      </v-flex>
+    </div>
+    <v-divider></v-divider>
+    <div class="gridcard rounded-card">
+      <v-layout row wrap class="ml-5">
+        <v-flex xs4 sm4 md4
+          ><v-text-field
+            label="Buscar"
+            @keyup="gridApi.setQuickFilter(filtro)"
+            v-model="filtro"
+            outlined
+          ></v-text-field>
+        </v-flex>
+        <v-flex xs2 sm2 md5> </v-flex>
+        <v-flex xs3 sm3 md3> </v-flex>
+      </v-layout>
+      <v-divider></v-divider>
+      <div class="gridcard rounded-card DispositivosSeriados">
+        <MantenedorGrid
+          style="font-family: 'Asap', sans-serif"
+          class="ag-theme-material"
+          :gridOptions="gridOptions"
+        />
+      </div>
+    </div>
+  </v-container>
+</template>
+<script lang="ts">
+import moment from 'moment';
+import { ComponenteBase } from '@/views/base/ComponenteBase';
+import config from '@/config/index';
+import { Component, Prop } from 'vue-property-decorator';
+import { IFuncionalidad } from '@/interfaces/Funcionalidad';
+import { actionsEvent } from '@/setup';
+import { Accion } from '@/config/enums';
+import { AxiosVue } from '@/AxiosVue';
+import { ServicioProxy } from '@/config/enums';
+import { Funcionalidades } from '@/config/funcionalidades';
+import { AgGridUtil } from '@/agGridUtil/agGridUtil';
+import Confirmation from '@/components/Confirmation.vue';
+import HandleErrors from '@/config/handleErrors';
+import store from '@/store';
+import { PermisoAccion } from '@/views/base/VariablesPermisos';
+
+import {
+  GridOptions,
+  GridApi,
+  ColumnApi,
+  ColDef,
+  GridReadyEvent,
+  RowNode,
+} from 'ag-grid-community';
+import MantenedorGrid from '@/reusable/Grid/MantenedorGrid.vue';
+import { LoadingService } from '@/services/loadingService';
+import { fetchRecepcion } from '../fetchRecepcion';
+import { FormFieldDefMap } from '@/reusable/Form/formUtils';
+import Dispositivo from '../Dispositivos/Dispositivo.vue';
+
+@Component({
+  components: {
+    MantenedorGrid,
+  },
+})
+export default class DispositivosSeriadosDetalles extends ComponenteBase {
+  @Prop({ required: true }) codigo: number;
+  @Prop({ default: false }) mostrarSerie: boolean;
+  filtro: string = '';
+  ordesList: any[] = [];
+
+  funcionalidad: Funcionalidades = Funcionalidades.TablasRecepcionEquipos;
+  usuario = JSON.parse(localStorage.getItem('user')).id;
+
+  mounted() {}
+
+  async getMovimientosSelected() {
+    let self = this;
+    this.loadingService.showLoading();
+    return fetchRecepcion(
+      { codigo: this.codigo },
+      'conectaMoviDispositivos/get_seriados_selected'
+    )
+      .then((data: any) => {
+        if (data.data.CODIGO_RESPUESTA == '1') {
+          return data.data.data.LISTA;
+        } else {
+          //self.$snotify.error(data.data.MENSAJE_RESPUESTA, { timeout: 3000 });
+          return false;
+        }
+      })
+      .catch((error: any) => {
+        self.$snotify.error('Ocurrió un error con los dispositivos seriados', {
+          timeout: 3000,
+        });
+        return false;
+      })
+      .finally(() => {
+        this.loadingService.hideLoading();
+        return null;
+      });
+  }
+
+  async handleGridReady(event: GridReadyEvent) {
+    this.ordesList = await this.getMovimientosSelected();
+    this.gridApi = event.api;
+    this.gridApi.setRowData(this.ordesList);
+    this.gridApi.setDomLayout('autoHeight');
+  }
+
+  onModelUpdated() {
+    if (!this.gridApi) {
+      return;
+    }
+  }
+  onSelectionChanged() {}
+  accionesTotales: PermisoAccion[] = [];
+
+  // Globales
+  search: string = '';
+  loadingService = new LoadingService();
+  handleErrors: HandleErrors = new HandleErrors();
+
+  // Controller
+  readonly controller: string = 'funcionalidad';
+  readonly controllerModuloAccion: string = 'moduloaccion';
+  axios: AxiosVue = new AxiosVue(ServicioProxy.GestionUsuario);
+
+  // Grilla
+  gridApi: GridApi;
+  columnApi: ColumnApi;
+  columnDefs: Array<ColDef> = [];
+  agGridUtil: AgGridUtil;
+  serverSide: any;
+
+  funcionalidades: Array<IFuncionalidad> = [];
+
+  //vuex
+  usuarioId: number = store.state.userId;
+
+  dateFormatter(params: any) {
+    return moment(params.value).format('MM/DD/YYYY');
+  }
+  constructor() {
+    super();
+  }
+
+  readonly gridOptions: GridOptions = {
+    pagination: true,
+    paginationPageSize: 30,
+    rowModelType: 'normal',
+    singleClickEdit: true,
+    localeText: {
+      noRowsToShow: 'No se han seleccionado dispositivos seriados',
+    },
+    columnDefs: [
+      {
+        headerName: 'Serie Número',
+        field: 'serienumero',
+        cellStyle: { textAlign: 'left' },
+        resizable: false,
+        sortable: false,
+        minWidth: 200,
+        width: 200,
+        lockPinned: true,
+      },
+      {
+        headerName: 'Tipo Equipo',
+        field: 'tipoeqname',
+        cellStyle: { textAlign: 'left' },
+        resizable: false,
+        sortable: false,
+        width: 400,
+        minWidth: 400,
+        lockPinned: true,
+      },
+      {
+        headerName: 'Rack',
+        field: 'moviserierack',
+        cellStyle: { textAlign: 'left' },
+        resizable: false,
+        sortable: false,
+        width: 400,
+        minWidth: 400,
+        lockPinned: true,
+      },
+      {
+        headerName: 'Bloque',
+        field: 'moviseriebloque',
+        cellStyle: { textAlign: 'left' },
+        resizable: false,
+        sortable: false,
+        width: 340,
+        minWidth: 340,
+        lockPinned: true,
+      },
+    ],
+    //rowModelType: 'serverSide',
+    serverSideDatasource: this.serverSide,
+    rowSelection: 'multiple',
+    columnTypes: {
+      fecha: {
+        sortable: true,
+        resizable: true,
+        filter: false,
+      },
+    },
+    onGridReady: this.handleGridReady,
+    onModelUpdated: this.onModelUpdated,
+    onSelectionChanged: this.onSelectionChanged,
+    processCellForClipboard: ({ value }) => {
+      return value instanceof moment
+        ? this.formatFecha(value as moment.Moment)
+        : value;
+    },
+    onGridSizeChanged: event => {
+      event.api.sizeColumnsToFit();
+    },
+  };
+
+  formatFecha(fecha: moment.Moment) {
+    return fecha.format('DD/MM/YYYY');
+  }
+}
+</script>

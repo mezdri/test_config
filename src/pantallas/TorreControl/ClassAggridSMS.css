@@ -1,0 +1,34 @@
+.cellClassAggrid:hover span #iconMap {
+  font-size: 28px !important;
+}
+
+.cellClassAggrid:hover span #iconVideo {
+  font-size: 28px !important;
+}
+
+.cellClassSendAggrid {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.send_type_aggrid_class span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px !important;
+}
+
+.cellClassSendAggrid span {
+  height: 31px;
+}
+
+.cellClassSendAggrid:hover span #iSMS {
+  font-size: 26px !important;
+}
+
+.cellClassSendAggrid:active span #iSMS {
+  font-size: 29px !important;
+  color: black !important;
+}

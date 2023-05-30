@@ -1,0 +1,344 @@
+#app {
+  font-family: 'Asap', sans-serif !important;
+}
+.ag-header-cell-text {
+  font-family: 'Asap', sans-serif !important;
+}
+.ag-menu {
+  text-align: left;
+}
+
+/* Animaciones */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fast {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+html {
+  overflow: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+.ag-theme-material .ag-icon-checkbox-checked {
+  background-image: url('../assets/checked2.svg') !important;
+}
+.ag-theme-material .ag-icon-checkbox-checked:empty {
+  background-image: url('../assets/checked2.svg') !important;
+}
+
+.ag-theme-material button[ref='btLast'] {
+  background-image: url('../assets/last.svg') !important;
+  background-size: 12px 12px !important;
+  opacity: 0.95 !important;
+  color: #526da5 !important;
+}
+
+.ag-theme-material button[ref='btNext'] {
+  background-image: url('../assets/next.svg') !important;
+  background-size: 12px 12px !important;
+  opacity: 0.95 !important;
+  color: #526da5 !important;
+}
+
+.ag-theme-material button[ref='btPrevious'] {
+  background-image: url('../assets/previous.svg') !important;
+  background-size: 12px 12px !important;
+  opacity: 0.95 !important;
+  color: #526da5 !important;
+}
+
+.ag-theme-material button[ref='btFirst'] {
+  background-image: url('../assets/first.svg') !important;
+  background-size: 12px 12px !important;
+  opacity: 0.95 !important;
+  color: #526da5 !important;
+}
+
+.ag-theme-material:hover button:hover {
+  opacity: 0.35 !important;
+}
+
+.ag-theme-material button[ref='btPrevious'][disabled] {
+  opacity: 0.45 !important;
+}
+
+.ag-theme-material button[ref='btLast'][disabled] {
+  opacity: 0.45 !important;
+}
+
+.ag-theme-material button[ref='btNext'][disabled] {
+  opacity: 0.45 !important;
+}
+
+.ag-theme-material button[ref='btFirst'][disabled] {
+  opacity: 0.45 !important;
+}
+
+/* MANTENEDORES  --------------------------------------------------------------*/
+
+.rounded-card {
+  border-radius: 3px !important;
+}
+
+.rounded-card2 {
+  border: 0px !important;
+}
+.cardnew {
+  background-color: #e9ebee;
+  min-height: 94vh;
+  height: 100% !important;
+}
+.dividercolor {
+  color: #000000 !important;
+}
+
+.gridcard {
+  display: block;
+  border-radius: 2px;
+  min-width: 0;
+  position: relative;
+  text-decoration: none;
+  -webkit-transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+  -webkit-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+.application {
+  font-family: 'asap', sans-serif !important;
+}
+.importExportBtnTexto {
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+.importExportBtnIcon {
+  color: #526da5 !important;
+}
+
+.btn-crear {
+  background-color: #526da5 !important;
+  color: white !important;
+  margin-left: -10px !important;
+}
+.btn-volver {
+  background-color: #526da5 !important;
+  max-height: 75% !important;
+}
+.btn-continuar {
+  background-color: #ffffff !important;
+  color: white !important;
+  max-height: 75% !important;
+}
+.btn-grabar {
+  background-color: #ffffff !important;
+  max-height: 75% !important;
+}
+.btn-asociar-icon {
+  color: #27488e !important;
+}
+.btn-asociar-texto {
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+.btn-barra {
+  color: #777777 !important;
+}
+.btn-importar-exportar {
+  color: #27488e !important;
+}
+.btn-importar-exportar span {
+  color: black !important;
+}
+button[title='Remover'] {
+  color: black !important;
+}
+
+.v-item-group.v-bottom-nav .v-btn--active {
+  opacity: 1;
+  border-bottom: 2px solid #526da5 !important;
+  padding-top: 6px;
+}
+.snotify-rightTop {
+  z-index: 20000000 !important;
+}
+
+/*DESDE ACA */
+.gm-style-iw-d {
+  margin-top: -8px !important;
+  margin-right: -4px !important;
+}
+
+#gridClasificacion {
+  height: auto !important;
+  margin-bottom: 50px;
+}
+
+/* SIDEBAR */
+
+.color-header-bar {
+  background-color: #fff !important;
+  color: #000000 !important;
+}
+
+.badge-sidebar {
+  cursor: pointer;
+  color: #526da5;
+}
+
+.sidebar-item.v-input:not(.v-input--is-disabled) input {
+  color: #000000;
+}
+
+.sidebar-item i.material-icons {
+  color: #000000;
+}
+
+.theme--dark.v-text-field.sidebar-item
+  > .v-input__control
+  > .v-input__slot:before {
+  border-color: #000000;
+}
+
+.logo-sidebar {
+  background-image: url('../assets/betterfield-logo.png');
+  background-repeat: no-repeat;
+  background-size: 60px 60px; /* tamaño de la imagen original */
+  background-position: 0px /* posición de la imagen original */;
+  cursor: pointer;
+  width: 80px; /* ancho de la imagen */
+  height: 80px; /* altura de la imagen */
+  max-width: 100%; /* para hacer que la imagen sea responsive */
+}
+
+.drawer .v-navigation-drawer {
+  height: calc(100% - 152px) !important;
+}
+.router-link-active {
+  color: #000000;
+  /* text-decoration: underline #ffe800; */
+  background-size: 1px 1em;
+  /* box-shadow:
+          inset 0 -0.175em white,
+          inset 0 -0.2em #000;
+
+        box-shadow:
+        inset 0 -0.075em white,
+        inset 0 -0.3em #ffe800,
+        inset 0 -0.15em white,
+        inset 0 -0.3em #ffe800; */
+  /* display: inline;
+        box-shadow: 0px 2px 0px 500px #ffe800; */
+  border-bottom: 5px solid #526da5 !important;
+}
+.v-list__tile__title {
+  height: 24px !important;
+  line-height: 22px !important;
+  position: relative !important;
+  text-align: left !important;
+}
+/* Emula estilos de "vínculos" internos creados con <li> */
+.vinculo-externo {
+  text-decoration: none;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.87);
+}
+.v-list__group .v-list__group__items .v-list__tile__title {
+  margin-left: 8px;
+}
+
+/*Home Generico*/
+.logo {
+  background-image: url('../assets/betterfield-logo.png');
+  background-repeat: no-repeat;
+  background-size: 60px 60px; /* tamaño de la imagen original */
+  background-position: 0px /* posición de la imagen original */;
+  height: 85px;
+  margin: 20px 0px 0px 15%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+.panelR {
+  float: right;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  color: black;
+  text-align: center;
+  display: flex;
+  height: 88px;
+}
+.containerLogo {
+  margin-left: 5%;
+  margin-top: -10px;
+  width: 175px;
+  height: 65px;
+  position: absolute;
+}
+.containerTxtFooter {
+  width: 205px;
+  height: 75px;
+  margin-left: 25%;
+}
+.textoFooter {
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  margin-top: 15px;
+}
+.btnFooter {
+  margin-left: 10%;
+  margin-top: 1%;
+  color: white !important;
+}
+#launcher {
+  bottom: 70px !important;
+}
+@media (max-width: 1200px) {
+  .textoFooter {
+    display: none;
+  }
+  .containerLogo {
+    display: none;
+  }
+}

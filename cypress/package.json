@@ -1,0 +1,13 @@
+{
+  "name": "tests-cypress",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test:ui": "cypress open",
+    "test:ui:run": "cypress run"
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "^5.0.2",
+    "cypress": "3.4.1"
+  }
+}
