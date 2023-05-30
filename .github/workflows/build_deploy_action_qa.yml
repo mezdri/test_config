@@ -59,11 +59,11 @@ jobs:
       - name: compile dist
         run: npm run build -- --mode testing1
 
-      - uses: actions/upload-artifact@v2
-        if: ${{ github.event_name == 'push' }}
-        with:
-          name: dist
-          path: dist
+#      - uses: actions/upload-artifact@v2
+#        if: ${{ github.event_name == 'push' }}
+#        with:
+#          name: dist
+#          path: dist
 
   deploy:
     if: ${{ github.event_name == 'push' }}
@@ -71,20 +71,5 @@ jobs:
     needs: [ build ]
 
     steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: dist
-          path: dist
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-region: ${{ secrets.S3_BUCKET_REGION_QA }}
-          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT }}:role/git-track3-portal
-          role-session-name: GithubSession # OIDC
-
-      - name: Check login
-        run: aws sts get-caller-identity
-
-      - name: Upload to S3
-        run: aws s3 sync ./dist s3://${{ secrets.S3_BUCKET_QA }} --acl public-read
+      - name: "Finalizar"
+        run: echo "Finaliza el proceso"
