@@ -1036,6 +1036,7 @@ export default class Login extends Vue {
     console.log("mejorando siempre las cosas")
     console.log('Hola');
     this.registrarValidadores();
+    console.log('Adios');
   }
 
   private registrarValidadores() {
