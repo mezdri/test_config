@@ -168,6 +168,7 @@ html {
 }
 .btn-grabar {
   background-color: #ffe800 !important;
+  color: black !important;
   max-height: 75% !important;
 }
 .btn-asociar-icon {
